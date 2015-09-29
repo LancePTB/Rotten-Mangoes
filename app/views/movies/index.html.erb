@@ -3,10 +3,10 @@
 <%= link_to "Create a movie!", new_movie_path %>
 <hr>
 <% @movies.each do |movie| %>
- <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+ <%= link_to image_tag(movie.poster_image_url.thumbnail), movie_path(movie) %>
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <%= @movie.review_average %>/10
-   <h3><%= formatted_date(@movie.release_date) %></h3>
+  <%= movie.review_average %>/10
+   <h3><%= (movie.release_date) %></h3>
   <p><%= movie.description %></p>
   <small>- <%= movie.director %></small>
   <hr>
