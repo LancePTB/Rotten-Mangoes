@@ -20,8 +20,8 @@ class MoviesController < ApplicationController
       @movies = Movie.all 
     else
       @movies = Movie.title_match(keyword_query) unless keyword_query.nil?
-      @movies = Movie.director_match(keyword_query) unless keyword_query.nil? || !((Movie.title_match(keyword_query)).empty?)
-      @movies = Movie.duration_match(lower,upper) unless duration_q.nil?
+      @movies << Movie.director_match(keyword_query)
+      @movies << Movie.duration_match(lower,upper) unless duration_q.nil?
     end 
     
   end
