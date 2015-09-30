@@ -5,6 +5,7 @@ RottenMangoes::Application.routes.draw do
   get "users/create"
   resources :movies
   root to: 'movies#index'
+  get 'search' => 'movies#index'
    
   namespace :admin do
     resources :users
