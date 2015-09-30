@@ -2,8 +2,7 @@ class MoviesController < ApplicationController
   
   def index
 
-    title_q = "%#{params[:title_query]}%" if params[:title_query].present?
-    director_q = "%#{params[:director_query]}%" if params[:director_query].present?
+    keyword_query = "%#{params[:keyword]}%" if params[:keyword].present?
     duration_q = "#{params[:duration_query]}" if params[:duration_query].present?
   
     upper = nil
@@ -17,11 +16,11 @@ class MoviesController < ApplicationController
       duration_q = nil
     end
 
-    if title_q.nil? && director_q.nil? && duration_q.nil?
+    if keyword_query.nil? && duration_q.nil?
       @movies = Movie.all 
     else
-      @movies = Movie.title_match(title_q) unless title_q.nil?
-      @movies = Movie.director_match(director_q) unless director_q.nil?
+      @movies = Movie.title_match(keyword_query) unless keyword_query.nil?
+      @movies = Movie.director_match(keyword_query) unless keyword_query.nil? || !((Movie.title_match(keyword_query)).empty?)
       @movies = Movie.duration_match(lower,upper) unless duration_q.nil?
     end 
     

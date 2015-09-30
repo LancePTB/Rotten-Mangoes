@@ -2,10 +2,8 @@
 <hr>
 <%= link_to "Create a movie!", new_movie_path %>
 <%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:title_query, "Title Search:") %>
-  <%= text_field_tag(:title_query) %>
-  <%= label_tag(:director_query, "Director Search:") %>
-  <%= text_field_tag(:director_query) %>
+  <%= label_tag(:keyword, "Keyword Search:") %>
+  <%= text_field_tag(:keyword) %>
   <%= label_tag(:duration_query, "Duration:") %>
   <%= select_tag(:duration_query, options_for_select([["N/A",0],["Under 90 minutes",1],["Between 90 and 120 minutes",2],["Over 120 minutes",3]])) %>
   <%= submit_tag("Search") %>
