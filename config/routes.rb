@@ -15,7 +15,7 @@ RottenMangoes::Application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
