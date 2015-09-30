@@ -20,7 +20,9 @@ class MoviesController < ApplicationController
     if title_q.nil? && director_q.nil? && duration_q.nil?
       @movies = Movie.all 
     else
-      @movies = Movie.where("title like ? or director like ? or runtime_in_minutes between ? and ?",title_q, director_q, lower, upper)
+      @movies = Movie.title_match(title_q) unless title_q.nil?
+      @movies = Movie.director_match(director_q) unless director_q.nil?
+      @movies = Movie.duration_match(lower,upper) unless duration_q.nil?
     end 
     
   end

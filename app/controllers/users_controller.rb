@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     @user.destroy
     UserMailer.notify_email(@user)
     redirect_to("/admin/users", notice: 'User was successfully deleted.')
-   
   end
 
   protected

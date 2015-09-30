@@ -28,6 +28,11 @@ class Movie < ActiveRecord::Base
     reviews.sum(:rating_out_of_ten)/reviews.size 
   end
 
+  scope :title_match, ->(title) { where("title like ?", title) }
+
+  scope :director_match, ->(director) { where("director like ?", director) }
+
+  scope :duration_match, ->(lower,upper) { where("runtime_in_minutes between ? and ?", lower,upper) }
   protected
 
   def release_date_is_in_the_future
